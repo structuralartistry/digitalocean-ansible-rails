@@ -3,7 +3,7 @@
   user: vagrant
 
   vars:
-    gem_path: ~/.rvm/gems/$ruby/bin
+    gem: ~/.rvm/rubies/ruby-head/bin/gem
     ruby: ruby-head
 
   tasks:
@@ -33,7 +33,7 @@
     - include: tasks/rvm.yml
     
     - name: install bundler
-      shell: $gem_path/gem install bundler
+      shell: $gem install bundler
       
     # Install postgres
     - include: tasks/postgres.yml
