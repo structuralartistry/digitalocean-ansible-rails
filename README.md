@@ -1,13 +1,17 @@
 # Rails dev box
 
-A default Rails machine using Ansible to provision it.
+A default Rails machine using Ansible to provision it. 
+
+This box provides the core packages needed for typical Rails 4 apps and nothing else.
+
+The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or less instantly.
 
 ## Installs
 
 + RVM
 + Postgres
 + Git
-+ Bundler
++ Image Magick
 
 ## Use
 
@@ -31,5 +35,4 @@ To view the files inside your VM cd into /vagrant
 
 ```
 cd /vagrant
-
 ```
