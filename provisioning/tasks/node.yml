@@ -15,6 +15,3 @@
 
 - name: install node packages
   apt: name=nodejs state=latest update_cache=yes
-
-- name: install nvm
-  command: wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh

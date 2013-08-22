@@ -1,11 +1,34 @@
-- name: ensure apt cache is up to date
-  action: apt update_cache=yes
-  
-- name: ensure packages are installed
-  action: apt name={{item}}
+- name: install db server packages
+  action: apt pkg=$item state=present
   with_items:
-      - postgresql
-      - postgresql-contrib
-      - postgresql-client
-      - libpq-dev
-      - python-psycopg2
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python-dev
+    - python-setuptools
+
+- name: install python libraries
+  action: easy_install name=psycopg2==2.4.5
+
+- name: add postgres user to admin group
+  action: user name=postgres groups=admin append=yes
+
+- name: update postgres db configuration
+  action: copy src=templates/postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf
+  notify:
+    - restart postgresql
+
+- name: update postgres client configuration
+  action: copy src=templates/pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf
+  notify:
+    - restart postgresql
+    
+- name: make sure vagrant user doesnt already exist
+  shell: sudo -u postgres psql -d template1 -c "DROP USER IF EXISTS vagrant;"
+  notify:
+    - restart postgresql
+
+- name: create a vagrant super user 
+  shell: sudo -u postgres psql -d template1 -c "create user vagrant; alter user vagrant with superuser;"
+  notify:
+    - restart postgresql
