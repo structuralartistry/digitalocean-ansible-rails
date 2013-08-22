@@ -34,10 +34,23 @@
     - include: tasks/rvm.yml
     
     - name: install bundler
-      gem: name=bundler state=latest
+      shell: $gem_path/gem install bundler
       
     # Install postgres
     - include: tasks/postgres.yml
-    
     # Install Redis
     - include: tasks/redis.yml
+    # Install node.js for a JS Runtime
+    - include: tasks/node.yml
+    
+    # Install general ruby/rails deps
+    - name: install some dependencies for some gems
+      apt: name={{item}} state=latest update_cache=yes
+      with_items:
+        - imagemagick
+        - libxml2-dev
+        - libxslt1-dev
+        - sqlite3
+        - libsqlite3-dev
+        - libqtwebkit-dev
+        - xvfb
