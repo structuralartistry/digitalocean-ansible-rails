@@ -32,8 +32,12 @@
         - python-software-properties
 
     - include: tasks/rvm.yml
+    
+    - name: install bundler
+      gem: name=bundler state=latest
       
-  handlers:
-    - name: restart postgresql
-      action: service name=postgresql state=restarted
-      sudo: True
+    # Install postgres
+    - include: tasks/postgres.yml
+    
+    # Install Redis
+    - include: tasks/redis.yml

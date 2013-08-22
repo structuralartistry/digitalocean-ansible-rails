@@ -6,3 +6,6 @@
   with_items:
       - postgresql
       - postgresql-contrib
+      - postgresql-client
+      - libpq-dev
+      - python-psycopg2

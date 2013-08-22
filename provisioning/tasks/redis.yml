@@ -1,0 +1,6 @@
+---
+- name: redis
+  apt: name=redis-server state=latest update_cache=yes
+
+- name: restart redis
+  shell: service redis-server restart
