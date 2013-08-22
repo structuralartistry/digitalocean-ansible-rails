@@ -5,7 +5,6 @@
   vars:
     gem_path: ~/.rvm/gems/$ruby/bin
     ruby: ruby-head
-    user: vagrant
 
   tasks:
     - name: update sudoers
