@@ -2,10 +2,6 @@
 - name: rmagick dependencies
   apt: name=$item state=latest update_cache=yes
   with_items:
-    - libdjvulibre-dev 
-    - libjpeg-dev 
-    - libtiff-dev 
-    - libwmf-dev
     - libmagickcore-dev 
     - libmagickwand-dev 
     - libmagick++-dev
