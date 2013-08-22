@@ -1,0 +1,14 @@
+- name: install RVM
+  shell: curl -L https://get.rvm.io | bash
+  tags: [ruby]
+  sudo: False
+
+- name: source the rvm files
+  shell: /bin/bash -c 'source /home/vagrant/.rvm/scripts/rvm'
+  tags: [ruby]
+  sudo: False
+
+- name: install latest ruby version
+  shell: /home/vagrant/.rvm/bin/rvm install $ruby --default
+  tags: [ruby]
+  sudo: False

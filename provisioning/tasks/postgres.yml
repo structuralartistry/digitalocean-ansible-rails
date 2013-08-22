@@ -1,0 +1,8 @@
+- name: ensure apt cache is up to date
+  action: apt update_cache=yes
+  
+- name: ensure packages are installed
+  action: apt name={{item}}
+  with_items:
+      - postgresql
+      - postgresql-contrib
