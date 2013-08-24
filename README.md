@@ -11,7 +11,11 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 + RVM
 + Postgres
 + Git
-+ Image Magick
++ RMagick
+
+# TODO 
+
++ NGINX
 
 ![](https://dl.dropboxusercontent.com/u/6475135/rails-dev-box.png)
 

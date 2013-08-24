@@ -22,13 +22,3 @@
   action: copy src=templates/pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf
   notify:
     - restart postgresql
-    
-- name: make sure vagrant user doesnt already exist
-  shell: sudo -u postgres psql -d template1 -c "DROP USER IF EXISTS vagrant;"
-  notify:
-    - restart postgresql
-
-- name: create a vagrant super user 
-  shell: sudo -u postgres psql -d template1 -c "create user vagrant; alter user vagrant with superuser;"
-  notify:
-    - restart postgresql

@@ -1,0 +1,23 @@
+- name: update sudoers
+  action: copy src=templates/sudoers dest=/etc/sudoers
+  sudo: True
+
+- name: update apt
+  action: command /usr/bin/apt-get update
+  sudo: True
+
+- name: update cache 
+  apt: update_cache=yes
+  sudo: True
+
+- name: install essential packages
+  apt: pkg=$item state=installed
+  sudo: True
+  with_items:
+    - build-essential
+    - curl
+    - git
+    - python-dev
+    - sqlite3
+    - python-setuptools
+    - python-software-properties

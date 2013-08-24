@@ -1,56 +1,37 @@
 ---
 - hosts: vagrant
   user: vagrant
+  gather_facts: no
 
   vars:
     gem: /home/vagrant/.rvm/rubies/ruby-head/bin/gem
     ruby: ruby-head
 
   tasks:
-    - name: update sudoers
-      action: copy src=templates/sudoers dest=/etc/sudoers
-      sudo: True
-
-    - name: update apt
-      action: command /usr/bin/apt-get update
-      sudo: True
-
-    - name: update cache 
-      apt: update_cache=yes
-      sudo: True
-
-    - name: install essential packages
-      apt: pkg=$item state=installed
-      sudo: True
-      with_items:
-        - build-essential
-        - curl
-        - git
-        - python-dev
-        - python-setuptools
-        - python-software-properties
-
+    # Basic server config and setup
+    - include: tasks/configure.yml
+    
+    # Install components
     - include: tasks/rvm.yml
-
-    # Install postgres
     - include: tasks/postgres.yml
-    # Install Redis
     - include: tasks/redis.yml
-    # Install node.js for a JS Runtime
     - include: tasks/node.yml
     
-    # Install general ruby/rails deps
-    - name: install some dependencies for some gems
-      apt: name={{item}} state=latest update_cache=yes
-      with_items:
-        - imagemagick
-        - libxml2-dev
-        - libxslt1-dev
-        - sqlite3
-        - libsqlite3-dev
-        - libqtwebkit-dev
-        - xvfb
-        
   handlers:
     - name: restart postgresql
       action: service name=postgresql state=restarted
+      sudo: True
+
+    - name: restart nginx
+      action: service name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
+        
+- hosts: vagrant
+  sudo: True
+  user: vagrant
+  sudo_user: postgres
+
+  tasks:
+    - name: create a vagrant database user
+      action: postgresql_user user=vagrant password=password role_attr_flags=CREATEDB
+
+ 
