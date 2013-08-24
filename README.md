@@ -13,9 +13,11 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 + Git
 + Image Magick
 
+![](https://dl.dropboxusercontent.com/u/6475135/rails-dev-box.png)
+
 ## Use
 
-First time
+First time (bear in mind the latest Ruby install will take a long time!)
 
 ```
 vagrant up
