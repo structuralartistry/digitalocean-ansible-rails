@@ -33,8 +33,14 @@ vagrant up --no-provision
 
 The idea is you work and edit your files locally but run the app inside your VM.
 
+Log in to your new VM
+
+```
+vagrant ssh
+```
+
 To view the files inside your VM cd into /vagrant
 
 ```
-cd /vagrant
+cd /vagrant && rails new myapp
 ```
