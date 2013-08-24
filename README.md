@@ -31,7 +31,10 @@ vagrant up --no-provision
 
 ## Workflow
 
-The idea is you work and edit your files locally but run the app inside your VM.
+The idea is you work and edit your files locally but run the app inside your VM. 
+
+All the files in your current directory (where your vagrant file is)
+can be viewed in your VM in /vagrant once you SSH in to the box.
 
 Log in to your new VM
 
