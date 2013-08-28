@@ -21,3 +21,5 @@
     - sqlite3
     - python-setuptools
     - python-software-properties
+    - sqlite3
+    - libsqlite3-dev
