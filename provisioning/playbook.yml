@@ -14,7 +14,7 @@
     # Install components
     - include: tasks/rvm.yml
     - include: tasks/postgres.yml
-    - include: tasks/redis.yml
+    #- include: tasks/redis.yml
     - include: tasks/node.yml
     
   handlers:
