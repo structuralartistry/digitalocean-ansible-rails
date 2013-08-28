@@ -23,3 +23,7 @@
     - python-software-properties
     - sqlite3
     - libsqlite3-dev
+
+- name: copy bashrc
+  action: copy src=templates/.bashrc dest=/home/vagrant/bashrc
+

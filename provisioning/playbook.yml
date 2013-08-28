@@ -14,16 +14,14 @@
     # Install components
     - include: tasks/rvm.yml
     - include: tasks/postgres.yml
-    #- include: tasks/redis.yml
+    # We need a JS runtime for the asset pipeline
     - include: tasks/node.yml
+    - include: tasks/nginx.yml
     
   handlers:
     - name: restart postgresql
       action: service name=postgresql state=restarted
       sudo: True
-
-    - name: restart nginx
-      action: service name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
         
 - hosts: vagrant
   sudo: True
@@ -32,6 +30,4 @@
 
   tasks:
     - name: create a vagrant database user
-      action: postgresql_user user=vagrant password=password role_attr_flags=CREATEDB
-
- 
+      action: postgresql_user user=vagrant password=password role_attr_flags=CREATEDB 

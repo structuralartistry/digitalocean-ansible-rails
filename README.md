@@ -11,7 +11,8 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 + RVM
 + Postgres
 + Git
-+ RMagick
++ RMagic (optional)
++ Redis (optional)
 
 # TODO 
 
@@ -27,10 +28,16 @@ First time (bear in mind the latest Ruby install will take a long time!)
 vagrant up
 ```
 
-Once the machine has been set up
+There are some language configuration issues with Postgres I haven't quite resolved yet.
+
+This will eventually be automated when I get some time to fix.
+
+To fix postgres for rails 
 
 ```
-vagrant up --no-provision
+sudo su postgres
+psql -f /home/vagrant/lang.sql
+sudo su vagrant
 ```
 
 ## Workflow
