@@ -11,7 +11,6 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 + RVM
 + Postgres
 + Git
-+ RMagic (optional)
 + Redis (optional)
 
 # TODO 
