@@ -1,8 +1,0 @@
----
-- name: rmagick dependencies
-  apt: name=$item state=latest update_cache=yes
-  with_items:
-    - imagemagick
-    - libmagickcore-dev 
-    - libmagickwand-dev 
-    - libmagick++-dev
