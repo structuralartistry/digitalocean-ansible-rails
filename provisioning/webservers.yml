@@ -3,5 +3,7 @@
   user: vagrant
   sudo: yes
   gather_facts: no
+  vars:
+    ruby: ruby-head
   roles:
     - vagrant

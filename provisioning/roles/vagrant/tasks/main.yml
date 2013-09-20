@@ -1,7 +1,4 @@
-# Basic server config and setup
-#- include: tasks/configure.yml
-# Install components
-#- include: tasks/rvm.yml
-#- include: tasks/postgres.yml
-# We need a JS runtime for the asset pipeline
-#- include: tasks/node.yml
+- include: base.yml
+- include: rvm.yml
+- include: mysql.yml
+- include: node.yml

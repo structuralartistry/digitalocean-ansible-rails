@@ -6,10 +6,16 @@ This box provides the core packages needed for typical Rails 4 apps and nothing 
 
 The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or less instantly.
 
+```
+ansible -m ping all -i provisioning/hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key
+
+```
+
 ## Installs
 
 + RVM
-+ Postgres
++ MySQL
++ Postgres (optional)
 + Git
 + Redis (optional)
 
@@ -21,8 +27,6 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 
 ## Use
 
-Be aware that the first time you run vagrant up the Ruby install will a long time!!!!!!! (couple of minutes for me))
-
 ```
 vagrant up
 vagrant ssh
@@ -31,7 +35,7 @@ vagrant ssh
 cd /vagrant
 sudo gem install --no-rdoc --no-ri rails
 # Create your app
-rails new myapp -d postgresql
+rails new myapp
 cd myapp
 # Create and migrate the database
 bundle exec rake db:create && rake db:migrate

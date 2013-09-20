@@ -6,5 +6,5 @@
   shell: /bin/bash -c 'source /home/vagrant/.rvm/scripts/rvm'
   sudo: False
 
-- name: install latest ruby version
-  shell: /home/vagrant/.rvm/bin/rvm install $ruby --default
+- name: install Ruby
+  shell: /home/vagrant/.rvm/bin/rvm install --default $ruby creates=~/.rvm/rubies/$ruby

@@ -1,7 +1,3 @@
-- name: update sudoers
-  action: copy src=templates/sudoers dest=/etc/sudoers
-  sudo: True
-
 - name: update apt
   action: command /usr/bin/apt-get update
   sudo: True
@@ -10,6 +6,7 @@
   apt: update_cache=yes
   sudo: True
 
+# Install anything essential that you need here
 - name: install essential packages
   apt: pkg=$item state=installed
   sudo: True
@@ -21,9 +18,8 @@
     - sqlite3
     - python-setuptools
     - python-software-properties
-    - sqlite3
     - libsqlite3-dev
 
-- name: copy bashrc
-  action: copy src=templates/.bashrc dest=/home/vagrant/bashrc
+# - name: copy bashrc
+#   action: copy src=../templates/bashrc dest=/home/vagrant/.bashrc
 

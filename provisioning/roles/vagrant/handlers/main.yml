@@ -1,6 +1,9 @@
 - name: restart postgresql
   action: service name=postgresql state=restarted
   sudo: True
+
+- name: restart mysql
+  action: service name=mysql state=restarted
   
 - name: restart nginx
   action: service name=nginx pattern=/etc/init.d/nginx state=restarted enabled=yes
