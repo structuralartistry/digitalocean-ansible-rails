@@ -1,15 +1,15 @@
 - name: update apt
   action: command /usr/bin/apt-get update
-  sudo: True
+  sudo: true
 
 - name: update cache 
   apt: update_cache=yes
-  sudo: True
+  sudo: true
 
 # Install anything essential that you need here
 - name: install essential packages
   apt: pkg=$item state=installed
-  sudo: True
+  sudo: true
   with_items:
     - build-essential
     - curl
