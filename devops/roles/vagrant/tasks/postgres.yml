@@ -1,0 +1,31 @@
+- name: install db server packages
+  action: apt pkg=$item state=present
+  with_items:
+    - postgresql
+    - postgresql-contrib
+    - libpq-dev
+    - python-dev
+    - python-setuptools
+
+- name: install python libraries
+  action: easy_install name=psycopg2==2.4.5
+
+- name: add postgres user to admin group
+  action: user name=postgres groups=admin append=yes
+
+# - name: update postgres db configuration
+#   action: copy src=postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf
+#   notify:
+#     - restart postgresql
+# 
+# - name: update postgres client configuration
+#   action: copy src=pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf
+#   notify:
+#     - restart postgresql
+# 
+# - name: copy sql for postgres
+#   action: copy src=lang.sql dest=/home/vagrant/lang.sql
+# 
+# - name: fix languages for postgres and vagrant machine
+#   shell: sudo -u postgres psql -f /home/vagrant/lang.sql
+

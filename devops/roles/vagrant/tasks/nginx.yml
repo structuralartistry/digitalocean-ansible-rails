@@ -1,0 +1,3 @@
+---
+- name: install nginx
+  action: apt name=nginx

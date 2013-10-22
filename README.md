@@ -23,10 +23,11 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 ## Use
 
 ```
-# First time
+
 vagrant up
-# if vm is already provisioned then run
-vagrant up --no-provision
+
+# Provision the VM
+./deploy.sh
 
 # SSH into your new VM
 vagrant ssh

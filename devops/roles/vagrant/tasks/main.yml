@@ -20,6 +20,19 @@
     - python-software-properties
     - libsqlite3-dev
 
-# - name: copy bashrc
-#   action: copy src=../templates/bashrc dest=/home/vagrant/.bashrc
+## RVM
+## ===============================================
+ 
+- name: install RVM
+  shell: curl -L https://get.rvm.io | bash
+  sudo: False
 
+- name: source the rvm files
+  shell: /bin/bash -c 'source /home/vagrant/.rvm/scripts/rvm'
+  sudo: False
+
+#- name: install Ruby
+#  shell: /home/vagrant/.rvm/bin/rvm install --default $ruby creates=~/.rvm/rubies/$ruby
+
+- include: node.yml
+- include: nginx.yml

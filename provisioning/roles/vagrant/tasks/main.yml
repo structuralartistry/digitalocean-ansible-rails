@@ -1,5 +1,0 @@
-- include: base.yml
-- include: rvm.yml
-- include: mysql.yml
-- include: node.yml
-- include: nginx.yml
