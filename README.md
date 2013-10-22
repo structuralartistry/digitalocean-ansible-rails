@@ -8,14 +8,9 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 
 ## Installs
 
-+ RVM
-+ MySQL
-+ Postgres (optional)
-+ Git
-
-# TODO 
-
-+ NGINX
++ Ruby 2
++ Postgres
++ Nginx
 
 ## Use
 
@@ -31,14 +26,27 @@ vagrant ssh web
 # Everything inside /vagrant is shared with your local file system
 
 cd /vagrant
-sudo gem install --no-rdoc --no-ri rails
 
 # Create your app
-rails new myapp
+sudo gem install --no-rdoc --no-ri rails
+sudo rails new myapp --database postgresql
 cd myapp
 # Create and migrate the database
 bundle exec rake db:create && rake db:migrate
 ```
+
+## Configure Postgres
+
+Since postgres is running on a separate server we need to do some groundwork
+
+```  
+vagrant ssh db
+sudo -u postgres psql
+postgres=#CREATE USER vagrant WITH SUPERUSER PASSWORD 'vagrant';
+
+# You can now log in to postgres using the username vagrant and password vagrant
+psql -h 192.168.111.223 -U vagrant -d mydb
+````
 
 ## Workflow
 

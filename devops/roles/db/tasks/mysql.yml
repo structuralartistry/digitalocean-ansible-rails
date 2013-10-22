@@ -1,0 +1,11 @@
+# Install MySQL
+#==============================================
+# - name: install mysql
+#   apt: name=$item state=latest update_cache=yes
+#   with_items:
+#     - mysql-server
+#     - mysql-client
+#     - libmysqlclient-dev
+#   
+# - name: service mysql  
+#   action: service name=mysql state=started

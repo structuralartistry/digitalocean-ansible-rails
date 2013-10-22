@@ -1,3 +1,4 @@
+---
 - name: update apt
   action: command /usr/bin/apt-get update
   sudo: true
@@ -8,7 +9,7 @@
 
 # Install anything essential that you need here
 - name: install essential packages
-  apt: pkg=$item state=installed
+  apt: pkg={{ item }} state=installed
   sudo: true
   with_items:
     - build-essential

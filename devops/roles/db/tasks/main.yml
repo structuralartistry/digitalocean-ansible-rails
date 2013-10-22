@@ -1,25 +1,14 @@
 ---
-  
-# Install MySQL
-#==============================================
-
-# - name: install mysql
-#   apt: name=$item state=latest update_cache=yes
-#   with_items:
-#     - mysql-server
-#     - mysql-client
-#     - libmysqlclient-dev
-#   
-# - name: service mysql  
-#   action: service name=mysql state=started
 
 # Install Postgres
 #==============================================
+
 - name: install db server packages
   action: apt pkg=$item state=present
   with_items:
     - postgresql
     - postgresql-contrib
+    - postgresql-common
     - libpq-dev
     - python-dev
     - python-setuptools
@@ -30,4 +19,19 @@
 - name: add postgres user to admin group
   action: user name=postgres groups=admin append=yes
   
+- name: copy postgres config
+  template: src=pg_hba.conf dest=/etc/postgresql/9.1/main/pg_hba.conf
+  
+- name: copy postgres config
+  template: src=postgresql.conf dest=/etc/postgresql/9.1/main/postgresql.conf
+  
+- name: restart postgresql
+  action: service name=postgresql state=restarted
+  sudo: True
+
+# - name: ensure database is created
+#   action: postgresql_db db={{db_name}}
+#       
+# - name: ensure user has access to database
+#   action: postgresql_user db={{ db_name }} user={{ db_user }} password={{ db_pass }} priv=ALL
 # #==============================================
