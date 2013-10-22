@@ -18,14 +18,10 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 
 + NGINX
 
-![](https://dl.dropboxusercontent.com/u/6475135/rails-dev-box.png)
-
 ## Use
 
 ```
-
 vagrant up
-
 # Provision the VM
 ./deploy.sh
 
