@@ -1,2 +1,5 @@
-[vagrant]
+[webservers]
 192.168.111.222
+
+[dbservers]
+192.168.100.20

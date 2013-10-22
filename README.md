@@ -20,12 +20,13 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 ## Use
 
 ```
+# Bring both the webserver and db server online
 vagrant up
 # Provision the VM
 ./deploy.sh
 
 # SSH into your new VM
-vagrant ssh
+vagrant ssh web
 
 # Everything inside /vagrant is shared with your local file system
 
@@ -48,8 +49,10 @@ can be viewed in your VM in /vagrant once you SSH in to the box.
 
 ## Misc
 
+Testing your SSH connection
+
 ```
-ansible -m ping all -i provisioning/hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key
+ansible -m ping all -i devops/hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key
 
 ```
 
