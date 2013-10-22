@@ -1,0 +1,48 @@
+#  Install Ruby
+## ===============================================
+- name: Install dependencies
+  apt: name=$item state=latest update_cache=yes
+  with_items:
+    - bison
+    - openssl
+    - libyaml-dev
+    - autoconf
+    - automake
+    - libtool
+    - pkg-config
+   
+- name: Add Brightbox PPA
+  action: apt_repository repo=ppa:brightbox/ruby-ng-experimental
+              
+- name: Install Ruby
+  apt: name=$item state=latest update_cache=yes
+  with_items:
+    - ruby2.0
+    - ruby2.0-dev
+    - ruby2.0-doc
+    
+- name: Install some useful ruby gems
+  action: gem name=$item state=present
+  with_items:
+    - rails
+
+#  Install Node.js for asset pipeline
+## ===============================================
+
+- name: add node repo
+  apt_repository: repo=ppa:chris-lea/node.js
+
+- name: update apt
+  command: sudo apt-get update
+
+- name: install node packages
+  apt: name=nodejs state=latest update_cache=yes
+ 
+#  Install Nginx
+## ===============================================
+   
+- name: install nginx
+  action: apt name=nginx
+
+#- name: Generate the Nginx configuration file
+#  copy: src=nginx.conf dest=/etc/nginx/nginx.conf

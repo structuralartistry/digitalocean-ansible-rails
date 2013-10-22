@@ -12,7 +12,6 @@ The ultimate goal here is to be able to boot up a new Ruby on Rails VM more or l
 + MySQL
 + Postgres (optional)
 + Git
-+ Redis (optional)
 
 # TODO 
 
