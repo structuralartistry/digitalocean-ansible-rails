@@ -6,6 +6,7 @@
   roles:
     - common
     - webservers
+    - nginx
 
 - hosts: dbservers
   user: vagrant

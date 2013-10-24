@@ -4,5 +4,5 @@
 - name: install nginx
   action: apt name=nginx
 
-#- name: Generate the Nginx configuration file
-#  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+- name: Generate the Nginx configuration file
+  copy: src=app.conf dest=/etc/nginx/sites-available/app

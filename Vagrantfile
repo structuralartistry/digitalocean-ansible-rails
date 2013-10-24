@@ -10,6 +10,7 @@ Vagrant.configure("2") do |config|
     # Network
     web_config.vm.network :private_network, ip: "33.33.33.10"
     web_config.vm.network :forwarded_port, guest: 3000, host: 3000
+    web_config.vm.network :forwarded_port, guest: 80, host: 8080
 
     # add a bit more memory, it never hurts. It's VM specific and we're using Virtualbox here.
     web_config.vm.provider :virtualbox do |vb|
