@@ -10,6 +10,7 @@
     - automake
     - libtool
     - pkg-config
+    - libpq-dev
    
 - name: Add Brightbox PPA
   action: apt_repository repo=ppa:brightbox/ruby-ng-experimental
