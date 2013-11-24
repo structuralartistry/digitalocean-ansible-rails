@@ -1,6 +1,6 @@
 #  Install Ruby
 ## ===============================================
-- name: Install dependencies
+- name: install dependencies
   apt: name=$item state=latest update_cache=yes
   with_items:
     - bison
@@ -14,18 +14,18 @@
     - libmagickwand-dev 
     - imagemagick
    
-- name: Add Brightbox PPA
+- name: add Brightbox PPA
   action: apt_repository repo=ppa:brightbox/ruby-ng-experimental
               
-- name: Install Ruby
+- name: install Ruby
   apt: name=$item state=latest update_cache=yes
   with_items:
     - ruby2.0
     - ruby2.0-dev
     - ruby2.0-doc
     
-- name: Install some useful ruby gems
-  action: gem name=$item state=present
+- name: install some useful ruby gems
+  action: gem name=$item state=latest
   with_items:
     - bundler
 
@@ -40,4 +40,3 @@
 
 - name: install node packages
   apt: name=nodejs state=latest update_cache=yes
-

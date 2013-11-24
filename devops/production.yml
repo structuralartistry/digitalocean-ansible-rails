@@ -1,0 +1,10 @@
+---
+- hosts: digitalocean
+  user: deploy
+  sudo: yes
+  gather_facts: no
+  roles:
+    - common
+    - webservers
+    - nginx
+    - db

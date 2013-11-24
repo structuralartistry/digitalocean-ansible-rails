@@ -15,6 +15,7 @@
     - build-essential
     - curl
     - git
+    - emacs
     - python-dev
     - sqlite3
     - python-setuptools

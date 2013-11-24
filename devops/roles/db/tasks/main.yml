@@ -2,13 +2,19 @@
 # Install Postgres
 #==============================================
 
+- name: add postgres latest version ppa
+  action: apt_repository repo=ppa:pitti/postgresql
+   
+- name: update apt
+  command: sudo apt-get update
+  
 - name: install db server packages
   action: apt pkg={{ item }} state=present
   with_items:
     - postgresql
+    - libpq-dev
     - postgresql-contrib
     - postgresql-common
-    - libpq-dev
     - python-dev
     - python-setuptools
 
