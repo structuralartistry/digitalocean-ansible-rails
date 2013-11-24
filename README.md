@@ -6,6 +6,12 @@ This box provides the core packages needed for typical Rails 4 apps and nothing 
 
 The target setup is Ubuntu Linux, Unicorn and Nginx.
 
+## Stack
+
++ Ruby 2
++ Nginx
++ Postgresql
+
 ## Use
 
 ```
