@@ -20,8 +20,6 @@ echo '\nRunning server provisioning...\n'
 echo '\nRunning as deploy user...\n'
 
 ansible-playbook playbooks/rbenv/setup.yml -i vagrant-hosts -u deploy
-#ansible-playbook playbooks/nginx/setup.yml -i vagrant-hosts -u deploy
-#ansible-playbook playbooks/node/setup.yml  -i vagrant-hosts -u deploy
-#ansible-playbook playbooks/mysql/setup.yml -i vagrant-hosts -u deploy
-
-#
+ansible-playbook playbooks/nginx/setup.yml -i vagrant-hosts -u deploy
+ansible-playbook playbooks/node/setup.yml  -i vagrant-hosts -u deploy
+ansible-playbook playbooks/mysql/setup.yml -i vagrant-hosts -u deploy
