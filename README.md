@@ -1,7 +1,7 @@
 # Vagrant Rails
 
-This will provision a Rails box suitable for production use running Nginx, Unicorn and \
-Postgres on Ubuntu on a cloud server or local Vagrant environment.
+This will provision a Rails box suitable for production use running Nginx, Unicorn and
+Postgres on a cloud Ubuntu server or local Vagrant environment.
 
 It should allow you to have a development environment that is identical to your production environment.
 
