@@ -1,6 +1,0 @@
-- name: restart postgresql
-  action: service name=postgresql state=restarted
-  sudo: True
-
-- name: restart mysql
-  action: service name=mysql state=restarted

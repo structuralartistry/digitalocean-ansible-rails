@@ -1,3 +1,27 @@
-#!/bin/sh
+# ==============================================================================
+#
+# Rails Env Installer
+#
+# The first playbook needs to be run as the root user. 
+# It will configure basic sever security, enable the firewall and create the deploy user for us
+#
+# ==============================================================================
 
-ansible-playbook devops/site.yml -i devops/hosts --private-key=$HOME/.vagrant.d/insecure_private_key
+echo '\nRunning server provisioning...\n'
+
+ansible-playbook playbooks/base/setup.yml -i hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key -vvv
+
+# ==============================================================================
+#
+# The following playbooks are run as the deploy user
+#
+# ==============================================================================
+
+echo '\nRunning as deploy user...\n'
+
+ansible-playbook playbooks/rbenv/setup.yml -i hosts -u deploy
+ansible-playbook playbooks/nginx/setup.yml -i hosts -u deploy
+ansible-playbook playbooks/node/setup.yml  -i hosts -u deploy
+ansible-playbook playbooks/mysql/setup.yml -i hosts -u deploy
+
+#
