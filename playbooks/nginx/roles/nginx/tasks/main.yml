@@ -6,5 +6,8 @@
 
 - name: install nginx
   action: apt name=nginx
+
+- name: delete default vhost
+  action: file path=/etc/nginx/sites-enabled/default state=absent
   notify:
     - restart nginx
