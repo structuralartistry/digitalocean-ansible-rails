@@ -68,4 +68,4 @@
   copy: src=gemrc dest=/root/.gemrc owner=root group=root mode=0644
   
 - name: install bundler
-  command: sudo gem install bundler && rbenv rehash
+  command: sudo /home/deploy/.rbenv/shims/gem install bundler
