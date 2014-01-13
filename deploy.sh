@@ -9,7 +9,7 @@
 
 echo '\nRunning server provisioning...\n'
 
-# ansible-playbook playbooks/base/setup.yml -i vagrant-hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key -vvv
+ansible-playbook playbooks/base/setup.yml -i vagrant-hosts -u vagrant --private-key=~/.vagrant.d/insecure_private_key -vvv
 
 # ==============================================================================
 #
