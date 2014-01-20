@@ -21,11 +21,14 @@
     - postgresql-contrib
     - postgresql-common
 
-- name: Add postgres user to admin group
-  action: user name=postgres groups=admin append=yes
-  
+#- name: Add postgres user to admin group
+#  action: user name=postgres groups=admin append=yes
+
+- name: Start postgresql
+  service: name=postgresql state=started 
+
 - name: Create the postgresql deploy user 
-  postgresql_user: name=deploy password=deploy
+  postgresql_user: name=deploy password=deploy login_host=127.0.0.1
   sudo: yes
   sudo_user: postgres
   
