@@ -1,0 +1,3 @@
+# User privilege specification
+root ALL=(ALL) NOPASSWD: ALL
+#vagrant ALL=(ALL) NOPASSWD: ALL

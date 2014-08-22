@@ -1,0 +1,30 @@
+---
+- hosts: all
+  sudo: yes
+  remote_user: vagrant
+  gather_facts: no
+  # we need to use the vagrant user until the tasks in this file are run
+  #remote_user: vagrant
+  vars:
+    # created with:
+    # python -c 'import crypt; print crypt.crypt("12345", "SomeSaltedValue")'
+    # sas-MacBook-Air:somauthentic sa$ python -c 'import crypt; print crypt.crypt("12345", "SomeSaltedValue")' > SohwzDNXMa.7M
+    root_user_password: SohwzDNXMa.7M
+ 
+  tasks:
+    - name: change root user password (this distro has an unknown root password)
+      user: name=root password={{root_user_password}}
+
+    - name: write a custom sudoers file for the root user so root can perform everything passwordless after this point
+            and we not rely on the vagrant user
+      copy: src=files/custom_sudoers
+            dest=/etc/sudoers.d/root_custom
+            owner=root
+            group=root
+            mode=0440
+
+    # would prefer to do these next two elsewhere (i.e. app server/common but root needs passwordless to proceed ;(
+    - name: copy my authorized key to vm for root user
+      authorized_key: user=root key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+    - name: copy sshd_config file 
+      copy: src=files/sshd_config dest=/etc/ssh
